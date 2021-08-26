@@ -7,20 +7,39 @@ export class BasicController {
 
     @Get('/')
     getAllList(){
-        return 'hello?';
-        // return this.basicService.findAll();
-    }
-
-    @Get('main2/') // localhost:port/basic/main
-    goodnight2(){
+        // return 'hello?';
         return this.basicService.findAll();
-        // return 'This is main2 !';
     }
 
+    @Get('dessert')
+    findDessert(){
+        return this.basicService.findDessert();
+    }
 
-    @Get('main/') // localhost:port/basic/main
-    goodnight(){
-        return this.basicService.getGoodnight();
+    @Get('west')
+    findWest(){
+        return this.basicService.findWest();
+    }
+
+    @Get('southEastAsia')
+    findSouthEastAsia(){
+        return this.basicService.findSouthEastAsia();
+    }
+
+    @Get('japanese')
+    findJapanese(){
+        return this.basicService.findJapanese();
+    }
+
+    @Get('maxican')
+    findMaxican(){
+        return this.basicService.findMaxican();
+    }
+
+    @Get('chinese')
+    findChinese(){
+        return this.basicService.findChinese();
     }
 
 }
+
