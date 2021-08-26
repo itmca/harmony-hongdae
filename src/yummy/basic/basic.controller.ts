@@ -6,8 +6,9 @@ export class BasicController {
     constructor(private readonly basicService: BasicService){}; // constructor 작동방법 알아보기
 
     @Get('/')
-    test(){
-        return "This is test !!!!!!";
+    getAllList(){
+        return 'hello?';
+        // return this.basicService.findAll();
     }
 
     @Get('main2/') // localhost:port/basic/main
@@ -21,4 +22,5 @@ export class BasicController {
     goodnight(){
         return this.basicService.getGoodnight();
     }
+
 }

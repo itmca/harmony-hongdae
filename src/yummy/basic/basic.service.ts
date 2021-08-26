@@ -1,20 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/entities/user.entity';
+import { Yum } from 'src/entities/yum.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class BasicService {
     constructor(
-        @InjectRepository(User)
-        private usersRepository: Repository<User>,
+        @InjectRepository(Yum)
+        private yummyRepository: Repository<Yum>,
       ) {}
 
         
-    findAll(): Promise<User[]> {
-        return this.usersRepository.find();
+    findAll(): Promise<Yum[]> {
+        return this.yummyRepository.find();
     }
 
+    findDessert(): Promise<Yum[]> {
+        return this.yummyRepository.find();
+    }
 
     getGoodnight(): string{
         return 'Good night';

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm'; //Ctrl + .
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { User } from './entities/user.entity';
+import { Yum } from './entities/yum.entity';
 import { YummyModule } from './yummy/yummy.module';
 
 // 내공(e.g. 단축키😎) + 외공 = 고수
@@ -17,7 +17,7 @@ import { YummyModule } from './yummy/yummy.module';
       username: 'admin',
       password: '7cBNTUpvuEEe',
       database: 'HONGDAE', // 접속하고 싶은 DB 이름
-      entities: [User], 
+      entities: [Yum], 
       synchronize: true, // Django의 migration과 같은 개념이다.
     }),
   ],
