@@ -1,0 +1,39 @@
+name: PR
+on:
+  pull_request: #pr 이벤트 감지
+    branches: [ test ] #test 브랜치(임의)에 해당
+    
+jobs:
+  build: #job id
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: build
+        run: 
+          npm install
+          npm build
+      - name: unit test
+        run: npm test
+        
+      - name: test coverage
+        run: npm test:cov
+        
+      # test가 실패할 경우(test coverage 사용) pr을 close하고 comment를 남긴다.  
+      - name  if fail
+        uses: actions/github-script@0.2.0 
+        with:
+          github-token: ${{github.token}}
+          script: |
+            const ref = "${{github.ref}}"
+            const pull_number - Number(ref.split("/")[2])
+            await github.pulls.createReview({
+              ...context.repo,
+              pull_number,
+              body: "테스트코드에 오류가 있습니다.",
+              event: "REQUEST_CHANGES"
+            })
+            await github.pulls.update({
+              ...contest.repo,
+              pull_uumber,
+              state: "closed"
+            })
+        if: failure()
